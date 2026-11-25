@@ -4,7 +4,7 @@ Sistema distribuído de perguntas e respostas: o usuário envia uma pergunta pel
 
 ```
 React ──HTTP──▶ Gateway ──▶ perguntas.queue ──▶ Worker ──▶ LLM (Ollama)
-  ▲                                               │
+  ▲                                                 │
   └──SSE── Gateway ◀── respostas.queue ◀──────────┘
 ```
 
@@ -17,9 +17,9 @@ React ──HTTP──▶ Gateway ──▶ perguntas.queue ──▶ Worker ─
 | Pasta | O que é | Parte | Responsável |
 |---|---|---|---|
 | `contratos/` | DTOs das mensagens, nomes das filas e configuração do RabbitMQ compartilhada | 1 | João |
-| `gateway/` | Spring Boot Web: endpoints REST, SSE e login | 2 (segurança: Parte 1) | _a definir_ |
-| `worker/` | Spring Boot sem Web: consome perguntas e chama a LLM | 3 | _a definir_ |
-| `frontend/` | React (Vite) | 4 | _a definir_ |
+| `gateway/` | Spring Boot Web: endpoints REST, SSE e login | 2 (segurança: Parte 1) | Felipe |
+| `worker/` | Spring Boot sem Web: consome perguntas e chama a LLM | 3 | Matheus |
+| `frontend/` | React (Vite) | 4 | David |
 | `pom.xml` (raiz) | Versões compartilhadas de Java, Spring Boot e Spring AI | 1 | João |
 | `docker-compose.yml` | RabbitMQ e Ollama | 1 | João |
 
