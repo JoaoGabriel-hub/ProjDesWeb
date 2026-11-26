@@ -47,7 +47,7 @@ public class MensageriaConfig {
     /** Usado por: Gateway e Worker, automaticamente, ao publicar (RabbitTemplate) e ao consumir (@RabbitListener). */
     @Bean
     public MessageConverter messageConverter() {
-        return new JacksonJsonMessageConverter();
+        return new JacksonJsonMessageConverter("br.com.tutoria.contratos");
     }
 
     // ================= PERGUNTAS — Gateway → Worker =================
