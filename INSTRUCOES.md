@@ -194,7 +194,7 @@ Ninguém precisa esperar essas entregas para começar. Elas vão sendo encaixada
 | Status | Entrega | O que muda para você |
 |---|---|---|
 | ✅ | Estrutura do repositório e `pom.xml` raiz | Crie seu projeto seguindo as instruções acima |
-| ⏳ | `docker-compose.yml` (RabbitMQ e Ollama) | `docker compose up -d` sobe tudo. Painel do RabbitMQ em `http://localhost:15672` |
+| ✅ | `docker-compose.yml` (RabbitMQ e Ollama) | `docker compose up -d` sobe tudo. Painel do RabbitMQ em `http://localhost:15672` |
 | ⏳ | Módulo `contratos` | Gateway e Worker adicionam a dependência `contratos` e usam `@Import(MensageriaConfig.class)`. As filas, a serialização JSON e os DTOs vêm prontos |
 | ⏳ | Segurança JWT no Gateway | Login em `POST /auth/login`. O token vai no header `Authorization: Bearer <token>`. No Gateway, o usuário logado é obtido com `@AuthenticationPrincipal` |
 | ⏳ | README final e diagrama | Instruções completas de execução para a apresentação |
