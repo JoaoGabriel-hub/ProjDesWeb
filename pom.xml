@@ -23,7 +23,7 @@
 
     <modules>
         <!-- cada um descomenta o seu quando criar o projeto -->
-        <!-- <module>contratos</module> -->
+        <module>contratos</module> 
         <!-- <module>gateway</module> -->
         <!-- <module>worker</module> -->
     </modules>
