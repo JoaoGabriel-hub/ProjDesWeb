@@ -67,6 +67,53 @@ Cada responsável cuida das dependências do **seu** `pom.xml` livremente, sem p
 
 ---
 
+## Como subir o RabbitMQ e o Ollama (Docker)
+
+Na raiz do repositório:
+
+```bash
+docker compose up -d            # sobe RabbitMQ + Ollama
+docker compose up -d rabbitmq   # sobe só o RabbitMQ
+docker compose ps               # confere se estão "running"
+docker compose down             # para tudo (os dados continuam salvos)
+```
+
+| Serviço | Endereço | Usado por |
+|---|---|---|
+| RabbitMQ (AMQP) | `localhost:5672` | Gateway e Worker |
+| Painel do RabbitMQ | http://localhost:15672 | Todos, para depurar |
+| Ollama (API da LLM) | `localhost:11434` | Worker |
+
+**Usuário e senha do RabbitMQ:** `desweb` / `desweb` (no painel e no código).
+
+**Configuração no `application.yml`** do Gateway e do Worker:
+
+```yaml
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: desweb
+    password: desweb
+```
+
+**No Worker**, o Spring AI precisa apontar para o Ollama:
+
+```yaml
+spring:
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+```
+
+**Baixar o modelo da LLM** (apenas na primeira vez, cerca de 1,3 GB):
+
+```bash
+docker exec -it tutoria-ollama ollama pull llama3.2:1b
+```
+
+> ⚠️ **Atenção ao espaço em disco:** a imagem do Ollama ocupa cerca de 9 GB. Tenha pelo menos **10 GB livres** antes de rodar `docker compose up -d`. Se a sua máquina tiver pouco espaço ou pouca memória, suba só o RabbitMQ (`docker compose up -d rabbitmq`) e deixe o Ollama rodando na máquina de quem cuida do Worker.
+
 ## Como criar o seu projeto (Gateway ou Worker)
 
 ### 1. Gerar o projeto no [start.spring.io](https://start.spring.io)

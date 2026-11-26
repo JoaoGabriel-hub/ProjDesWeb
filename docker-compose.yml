@@ -1,0 +1,25 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: tutoria-rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"     # AMQP: usado pelo Gateway e pelo Worker
+      - "15672:15672"   # painel web de gerenciamento
+    environment:
+      RABBITMQ_DEFAULT_USER: desweb
+      RABBITMQ_DEFAULT_PASS: desweb
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+
+  ollama:
+    image: ollama/ollama
+    container_name: tutoria-ollama
+    ports:
+      - "11434:11434"   # API usada pelo Spring AI no Worker
+    volumes:
+      - ollama-data:/root/.ollama
+
+volumes:
+  rabbitmq-data:
+  ollama-data:
