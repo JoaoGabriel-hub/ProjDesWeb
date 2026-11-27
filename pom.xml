@@ -24,6 +24,7 @@
     <modules>
         <!-- cada um descomenta o seu quando criar o projeto -->
         <module>contratos</module> 
+        <module>auth</module>
         <!-- <module>gateway</module> -->
         <!-- <module>worker</module> -->
     </modules>
